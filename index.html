@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Psycocharium - Slime Mold Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="topInstructions">
+    <div class="introGrid">
+      
+      <!-- Left Image -->
+      <figure id="leftImage">
+        <img src="Assets/Physarum4.png" alt="Slime mold example" class="sideSlimeImage">
+      </figure>
+      
+      <div class="introText">
+        <h2>Physarium Polycephalum: A Slime Mold Simulation</h2>
+        
+        <p>
+          Physarum polycephalum (Slime mold) is a type of single-celled organism that can move and behave like a multicellular organism. 
+          This simulation is inspired by a book I read called 
+          <em>"Emergence: The Connected Lives of Ants, Brains, Cities, and Software"</em> by Steven Johnson, 
+          in which I learned the intriguing concept of emergence and how complex behaviors can arise from individual agents following simple rules.
+        </p>
+        
+        <p>
+          One of the most shocking examples of emergent behavior is the slime mold, which can solve mazes, 
+          has been used to model the <span class="neonHighlight">Tokyo rail system</span>, and can even solve the 
+          <span class="neonHighlight">traveling salesman problem</span>.
+          Although this simulation may be fun to play with, the real-world implications of emergent behavior are profound 
+          and can be seen in many systems, from ant colonies to traffic patterns to the internet.
+        </p>
+        
+        <p>
+          This slime mold simulation is not a normal representation of how slime mold behaves—most of it is meant to replicate 
+          their emergent behavior that occurs during food scarcity.
+          I have added a toggle for food scarcity, which will make the slime mold behave more like real slime mold would 
+          (form more clusters, thereby moving faster as a cluster to find food sources).
+        </p>
+      </div>
+      
+      <!-- Right Image -->
+      <figure id="rightImage">
+        <img src="Assets/Physarum2.jpg" alt="Slime mold example" class="sideSlimeImage">
+      </figure>
+
+    </div>
+  </div>
+
+  <div id="mainWrapper">
+
+    <!-- Control panel -->
+    <div id="controlPanel">
+      <div id="controlPanelHeader">Slime Mold Controls</div>
+      <div id="controlPanelContent">
+
+        <!-- Particle Count -->
+        <div class="controlGroup particleCountGroup">
+          <label>Particle Count (<span id="particleCountValue">50000</span>)</label>
+          <input type="range" id="particleCount" min="1000" max="200000" step="1000" value="50000">
+          <button id="applyParticleCountBtn">Apply</button>
+        </div>
+
+        <!-- Sensor Angle -->
+        <div class="controlGroup">
+          <label>Sensor Angle (<span id="sensorAngleValue">36°</span>)</label>
+          <input type="range" id="sensorAngle" min="0" max="180" value="36">
+        </div>
+
+        <!-- Step Size -->
+        <div class="controlGroup">
+          <label>Step Size (<span id="stepSizeValue">4.2</span>)</label>
+          <input type="range" id="stepSize" min="0.1" max="5" step="0.1" value="4.2">
+        </div>
+
+        <!-- Deposit Amount -->
+        <div class="controlGroup">
+          <label>Deposit Amount (<span id="depositAmountValue">45</span>)</label>
+          <input type="range" id="depositAmount" min="1" max="50" step="1" value="45">
+        </div>
+
+        <!-- Decay Factor -->
+        <div class="controlGroup">
+          <label>Decay Factor (<span id="decayFactorValue">0.809</span>)</label>
+          <input type="range" id="decayFactor" min="0.5" max="0.999" step="0.001" value="0.809">
+        </div>
+
+        <!-- Simulation Speed -->
+        <div class="controlGroup">
+          <label>Simulation Speed (<span id="simulationSpeedValue">1x</span>)</label>
+          <input type="range" id="simulationSpeed" min="1" max="10" step="1" value="1">
+        </div>
+
+        <!-- Pheromone Attraction -->
+        <div class="controlGroup">
+          <label>Pheromone Attraction (<span id="pheromoneAttractionValue">5.0</span>)</label>
+          <input type="range" id="pheromoneAttraction" min="0.1" max="5" step="0.1" value="5.0">
+        </div>
+
+        <!-- Glow Intensity -->
+        <div class="controlGroup">
+          <label>Glow Intensity (<span id="glowIntensityValue">1.5</span>)</label>
+          <input type="range" id="glowIntensity" min="0.1" max="3" step="0.1" value="1.5">
+        </div>
+
+        <!-- Hue Shift Speed -->
+        <div class="controlGroup">
+          <label>Hue Shift Speed (<span id="hueSpeedValue">0.12</span>)</label>
+          <input type="range" id="hueSpeed" min="0" max="0.3" step="0.01" value="0.12">
+        </div>
+
+        <!-- Food Scarcity Toggle -->
+        <div class="controlGroup checkboxGroup">
+          <label>
+            <input type="checkbox" id="foodScarcityToggle" />
+            Food Scarcity
+          </label>
+        </div>
+
+        <!-- Clear and Randomize Buttons -->
+        <div id="buttonRow">
+          <button id="ResetBtn">Reset</button>
+          <button id="randomizeBtn">Randomize</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="canvasContainer">
+      <canvas id="slimeCanvas"></canvas>
+      <div id="pushCircle"></div>
+
+  </div>
+
+  <!--  THREE.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  
+  <script src="slimemold.js"></script>
+
+</body>
+</html>
